@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+  <style>
+    body {
+      overflow-x: scroll;
+    }
+
+    nav.header {
+      font-family: monospace;
+      margin-bottom: 10px;
+    }
+
+    nav.header a,
+    nav.header a:visited {
+      color: #329af0;
+      text-decoration: none;
+    }
+
+    nav.header a:hover {
+      color: #a3daff;
+    }
+
+    #gpustat {
+      line-height: 0.95;
+    }
+
+    pre.ansi2html-content {
+      white-space: pre;
+      word-wrap: normal;
+    }
+
+    /* no line break */
+  </style>
+
+  {{ ansi2html_headers | safe }}
+</head>
+
+<body class="body_foreground body_background" style="font-size: normal;">
+
+  <nav class="header">
+    <a href="https://github.com/wookayin/gpustat-web" target="_blank">gpustat-web</a>
+    by <a href="https://github.com/wookayin" target="_blank">@wookayin</a>
+  </nav>
+
+  <div id="gpustat">
+    <pre class="ansi2html-content" id="gpustat-content">
+      {{ gpustat_content | safe }}
+      </pre>
+  </div>
+
+</body>
+
+</html>
