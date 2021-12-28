@@ -170,8 +170,6 @@ async def run_client(hostname: str, exec_cmd: str, *, port=22,
 def main():
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('hosts', nargs='*',
-                        help='List of nodes. Syntax: HOSTNAME[:PORT]')
     parser.add_argument('--verbose', action='store_true')
     parser.add_argument('--ssh-port', type=int, default=22,
                         help="Default SSH port to establish connection through. (Default: 22)")
@@ -182,7 +180,7 @@ def main():
                         help="command-line to execute (e.g. gpustat --color --gpuname-width 25)")
     args = parser.parse_args()
 
-    hosts = args.hosts or ['localhost']
+    hosts = ["io2", "io4", "io6", "io51", "io52", "io55"]  # "io56"]
     cprint(f"Hosts : {hosts}", color='green')
     cprint(f"Cmd   : {args.exec}", color='yellow')
 
