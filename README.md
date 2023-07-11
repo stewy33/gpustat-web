@@ -1,7 +1,7 @@
-gpustat-web-cis
+gpustat-web-align
 ===========
 
-Custom fork of [gpustat-web](https://github.com/wookayin/gpustat-web). Run with `python app.py` and it will track the gpu status of all servers on the CIS cluster (io2, io4, io6, io51, io52, io55, io56) and store this output in `~/public_html`, making it visible at [http://www.cis.jhu.edu/~sslocum/cluster_status.html](http://www.cis.jhu.edu/~sslocum/cluster_status.html).
+Custom fork of [gpustat-web](https://github.com/wookayin/gpustat-web). Run on each server with `python app.py` and it will track the gpu status of all servers on the align cluster (align-1, align-2, align-3) and store this output in `~/public_html`, making it visible at [http://people.csail.mit.edu/stew/align-1-cluster-status.html](http://people.csail.mit.edu/stew/align-1-cluster-status.html) for the align-1 server, for example.
 
 Output should look like ![output](screenshot.png)
 
