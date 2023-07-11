@@ -5,30 +5,61 @@
   <style>
     body {
       overflow-x: scroll;
+      font-family: monospace;
+      font-size: 1.2em;
     }
 
     nav.header {
-      font-family: monospace;
-      margin-bottom: 10px;
+      text-align: center;
+      font-size: large;
+      padding-top: 2em;
+      padding-bottom: 2em;
     }
 
-    nav.header a,
-    nav.header a:visited {
+    a,
+    a:visited {
       color: #329af0;
       text-decoration: none;
     }
 
-    nav.header a:hover {
+    a:hover {
       color: #a3daff;
     }
 
-    #gpustat {
-      line-height: 0.95;
+    nav.header a {
+      border: 1px solid #329af0;
+      margin: 2em 2em 2em 2em;
+      padding: 0.5em 0.5em 0.5em 0.5em;
+    }
+
+    nav.header a.{{ server_name }} {
+      background-color: #329af0;
+      color: #fff;
     }
 
     pre.ansi2html-content {
       white-space: pre;
       word-wrap: normal;
+    }
+    
+
+    .user {
+      font-weight: bold;
+    }
+
+    .cpu {
+      color: #5f8700;
+      font-weight: bold;
+    }
+
+    .mem {
+      color: #af8700;
+      font-weight: bold;
+    }
+
+    td {
+      padding-right: 0.5em;
+      padding-left: 0.5em;
     }
 
     /* no line break */
@@ -40,15 +71,37 @@
 <body class="body_foreground body_background" style="font-size: normal;">
 
   <nav class="header">
-    <a href="https://github.com/wookayin/gpustat-web" target="_blank">gpustat-web</a>
-    by <a href="https://github.com/wookayin" target="_blank">@wookayin</a>
+    <a href="align-1-cluster-status.html" class="align-1">align-1</a>
+    <a href="align-2-cluster-status.html" class="align-2">align-2</a>
+    <a href="align-3-cluster-status.html" class="align-3">align-3</a>
   </nav>
 
+  Last Updated: {{ last_update }}<br><br>
+
+  GPU Status:
   <div id="gpustat">
     <pre class="ansi2html-content" id="gpustat-content">
       {{ gpustat_content | safe }}
       </pre>
   </div>
+
+  CPU Status:
+  <table>
+    <tr>
+      <td>User</td>
+      <td>| CPU</td>
+      <td>| Memory</td>
+    </tr>
+    {% for item in cpu_user_usage %}
+    <tr>
+       <td class="user">{{item.username}}</td>
+       <td>| <span class="cpu">{{item.cpu_percent}}%</span></td>
+       <td>| <span class="mem">{{item.memory}} GB</span></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br>
+  {{ cpu_total_usage }}
 
 </body>
 
